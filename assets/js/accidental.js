@@ -113,7 +113,8 @@ function addFileToList(fileObject, fileName) {
 
 let cleartime = null;
 function timer(lowerVal, UpperVal) {
-
+  console.log('condition 1 of 1')
+  console.log(lowerVal,UpperVal, 'Lower, upper')
   var random = 1
   return new Promise((resolve, reject) => {
     var i = lowerVal
@@ -1050,7 +1051,7 @@ function handleForm(event) {
     $("#step2>div").addClass("active");
     $('#requirements').show();
     /*  $('#requirements')[0].scrollIntoView(true); */
-    $("#customer_Name").text(`Hi ${field_firstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 7 to 10 working days on the status of your request.`);
+    $("#customer_Name").text(`Hi ${field_firstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 1 to 2 working days on the status of your request.`);
     console.log('Data -> ', data)
 
     InsuredInformation["firstName"] = field_firstName.toUpperCase();
@@ -2125,12 +2126,16 @@ function finalSubmitCall() {
         }
       })
     }), '*');
+    console.log('Initial condition')
     timer(2, 85).then(async () => {
+      console.log('condition1');
     })
+
   })
 
   window.addEventListener('message', function (eventData) {
-
+    console.log(eventData, 'Event Data1')
+    console.log('condition2')
     try {
 
       if (eventData.data) {
@@ -2140,7 +2145,7 @@ function finalSubmitCall() {
           clearTimeout(cleartime);
           console.log('upload success event received')
           timer(85, 95).then(async () => {
-
+            console.log('condition3')
 
           })
 
@@ -2157,14 +2162,14 @@ function finalSubmitCall() {
   })
 
   window.addEventListener('message', function (eventData) {
+    console.log(eventData, 'Event Data2')
 
 
-    // console.log(event.data.event_code)
     try {
 
       if (eventData.data) {
         let event = JSON.parse(eventData.data);
-        console.log(event)
+        console.log(event, 'Event')
         if (event.event_code == 'finalSubmitResponse') { //sucess
           clearTimeout(cleartime);
           console.log('finalsubmit event received')
@@ -2189,6 +2194,7 @@ function finalSubmitCall() {
 
           }
           else {
+            console.log('In else Event Data 2')
             // alert(event.data.returnMessage + 'returnCode not 0 ')
             document.getElementById('returnMessage').innerHTML = event.data.returnMessage;
             $("#invalidReturnCode").modal("show");
@@ -3214,6 +3220,7 @@ function submitOtp() {
         if (event.event_code == 'validationResponse') { //sucess
           console.log(event.data)
           if (event.data.returnCode == '0' || event.data.retCode == '0') {
+            console.log('under 0 condition====')
             document.getElementById("back_btn1").style.display = "none";
             // document.getElementById("back_btn1").disabled = true;
             $('#invalidOtp').modal('hide');

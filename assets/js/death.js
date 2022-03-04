@@ -1280,7 +1280,7 @@ function handleFormAddBeneficiary(event) {
             // name to show in 'your request is being processed section'
             ben_name_req_progress = ''
             // $('#user_name').text = ben_name_req_progress;
-            $("#customer_Name").text(`Hang in there as we are now processing your request. Kindly expect an SMS update from us within 7 to 10 working days on the status of your request.`);
+            $("#customer_Name").text(`Hang in there as we are now processing your request. Kindly expect an SMS update from us within 1 to 2 working days on the status of your request.`);
         }
         dataReset("field_addBeneficiaryFirstName", "field_addBeneficiaryMiddleName", "field_addBeneficiaryLastName", "field_addBeneficiaryMobileNum", "field_addBeneficiaryEmailAddress", "field_addBeneficiaryHomeAddress", "field_addBeneficiaryDOB", "field_addBeneficiaryPOB", "field_addBeneficiaryNationality", "field_addBeneficiarySex", "field_addBeneficiaryRelationToDeceased", "field_addBeneficiaryEmployerName", "field_addBeneficiaryOccupation", "field_addBeneficiary_relatives1", "field_add_Beneficiary_add_relatives2");
         uploadDataReset();
@@ -1850,7 +1850,7 @@ function handleForm(event) {
         $('#form_wrapper').hide();
         $('#death_data_privacy').hide();
         $('#payment').show();
-        $("#customer_Name").text(`Hi ${field_BeneficiaryFirstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 7 to 10 working days on the status of your request.`);
+        $("#customer_Name").text(`Hi ${field_BeneficiaryFirstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 1 to 2 working days on the status of your request.`);
         console.log('Data -> ', data)
 
     } else if ((comapareDates == false) && ((field_DOB !== '') || (field_DOID !== ''))) {
@@ -3275,7 +3275,7 @@ function addBeneficiaryNew(event) {
         if (buttonCount > 6) {
             buttonCount = 6
             $('#warning_parent_addBeneficiary').show();
-            $('#addBeneficiary_upload_warning').text('Sorry, you reached the maximum number of 6 beneficiaries for any claim request. You may review your policy details on ePlan or send us an e-mail at philamlife@aia.com for any concerns regarding your policy information.');
+            $('#addBeneficiary_upload_warning').text('Sorry, you have reached the maximum number of beneficiaries for your claim request. Should you wish to add more beneficiaries, kindly send us an e-mail at claims@aia.com.');
             $('.btn2').prop("disable", true);
             $('#popUp').modal('show');
         } else {
