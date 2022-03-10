@@ -1850,7 +1850,7 @@ function handleForm(event) {
         $('#form_wrapper').hide();
         $('#death_data_privacy').hide();
         $('#payment').show();
-        $("#customer_Name").text(`Hi ${field_BeneficiaryFirstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 1 to 2 working days on the status of your request.`);
+        $("#customer_Name").text(`Hi ${field_BeneficiaryFirstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 7 to 10 working days on the status of your request.`);
         console.log('Data -> ', data)
 
     } else if ((comapareDates == false) && ((field_DOB !== '') || (field_DOID !== ''))) {
