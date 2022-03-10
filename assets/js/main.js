@@ -438,19 +438,22 @@ function setClaimProgressScreenHeader(title) {
     if (title == 'accident') {
         document.getElementById('claim-header-text').innerHTML = 'ACCIDENT';
         document.getElementById('claim-header-desc').innerHTML = 'We have your back and we&#8217;re here to help you focus on your recovery';
-        document.getElementById('claim-header-img').src = '../../public/webviews/aia_pal_d2/assets/images/accidental.png';
+        // document.getElementById('claim-header-img').src = '../../public/webviews/aia_pal_d2/assets/images/accidental.png';
+        document.getElementById('claim-header-img').src = './assets/images/accidental.png';
         setAccidentClaimStatusMsg()
     }
     else if (title == 'illness') {
         document.getElementById('claim-header-text').innerHTML = 'ILLNESS';
         document.getElementById('claim-header-desc').innerHTML = 'Don’t worry about your medical expenses because we’re here for you.';
-        document.getElementById('claim-header-img').src = '../../public/webviews/aia_pal_d2/assets/images/illness.png';
+        // document.getElementById('claim-header-img').src = '../../public/webviews/aia_pal_d2/assets/images/illness.png';
+        document.getElementById('claim-header-img').src = './assets/images/illness.png';
         setIllnessClaimStatusMsg()
     }
     else if (title == 'death') {
         document.getElementById('claim-header-text').innerHTML = 'DEATH';
         document.getElementById('claim-header-desc').innerHTML = 'Nothing can be harder than losing someone close to us, that’s why we’re here to help you in this trying time.';
-        document.getElementById('claim-header-img').src = '../../public/webviews/aia_pal_d2/assets/images/death.png';
+        // document.getElementById('claim-header-img').src = '../../public/webviews/aia_pal_d2/assets/images/death.png';
+        document.getElementById('claim-header-img').src = './assets/images/death.png';
         setDeathClaimStatusMsg()
     }
 }
