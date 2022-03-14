@@ -16,7 +16,3 @@ var progress_msges = [
     { 'id': 12, 'msg': "We are currently processing your payout" },
     { 'id': 13, 'msg': "Your payout will be credited to your nominated bank account." },
 ]
-  
-
-
-
