@@ -233,7 +233,7 @@ function trackProgress() {
                             docsReceived = event.data.docsReceived?.toLowerCase();
                             policyNumber = event.data.policyNumber;
                             claimantFirstName = event.data.claimantFirstName;
-                            allStepperActive.log(claimantFirstName, 'claimantFirstName~~~~~~~~>>')
+                            console.log(claimantFirstName, 'claimantFirstName~~~~~~~~>>')
 
                             sourceSystem = event.data.sourceSystem?.toLowerCase();
                             org_sourceSystem = event.data.sourceSystem;
