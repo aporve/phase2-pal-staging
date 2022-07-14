@@ -36,7 +36,7 @@ var currSeconds = 0;
 var survey_form = document.getElementById('customer_survey');
 
 survey_form.addEventListener('submit', submit_survey);
-$(document).ready(function (event) { 
+$(document).ready(function (event) {
     let idleInterval = setInterval(timerIncrement, 1000);
     $(this).mousemove(resetTimer);
     $(this).keypress(resetTimer);
@@ -198,7 +198,7 @@ function trackProgress() {
 
     window.addEventListener('message', function (eventData) {
 
-        console.log("receiving claim status event")
+        console.log("receiving claim status event ")
         // console.log(event.data.event_code)
         try {
 
@@ -260,9 +260,9 @@ function trackProgress() {
                             if (claimAmount != null && claimAmount != '' && claimAmount != '0.0' && claimAmount != '0.00') { document.getElementById('payment_amount').innerHTML = currency + ' ' + claimAmount; }
                             else {
                                 document.getElementById('payment_amount').innerHTML = ''
-                                $("#payment-ref").css({"background-color":"lightgray"});
-                                $("#payment_text").css({"color":"#b3b1b2"});
-                                
+                                $("#payment-ref").css({ "background-color": "lightgray" });
+                                $("#payment_text").css({ "color": "#b3b1b2" });
+
                             }
 
                             displayDateForClaimStatus()
@@ -618,7 +618,7 @@ function setAccidentClaimStatusMsg() {
 function setIllnessClaimStatusMsg() {
     if (isFallout.toLowerCase() == 'y') {
 
-        if (docsPending == 'y' && docsReceived == 'n'&& claimStatus == 'received') {
+        if (docsPending == 'y' && docsReceived == 'n' && claimStatus == 'received') {
 
             twoStepperActive();
             var finalDocsList = '';
@@ -765,13 +765,12 @@ function setDeathClaimStatusMsg() {
                 finalDocsList = finalDocsList + '<div style="display: flex;align-items: center; padding-bottom: 1px;"> <div id="outer-circle"> <div id="inner-circle"></div> </div> <p style="padding-left:7px">' + ' ' + item.name + '</p> </div>'
 
             });
-            if(claimantFirstName !== ''){
+            if (claimantFirstName !== '') {
                 document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR OTHER CLAIMS DOCUMENTS</h3> <br /> <p class="font-weight-justy request-font"> Our sincerest condolences for your loss. </p> <br /> <p class="font-weight-justy request-font"> Hi ' + claimantFirstName + '.We have reviewed your initial claim request submission and identified that we may need the following documents for us to proceed: </p > <br /> <p class="font-weight-normal request-font"> <div style="padding-left: 10px;"> ' + finalDocsList + '</div> </p> <br /> <p class="font-weight-normal request-font"> Don&#39;t worry, you can easily submit scanned copies of these documents via e-mail at claims@aia.com so we can proceed with your claim request. </p> </div>';
-                
                 document.getElementById("turnaround-time-ref").style.display = "block";
                 document.getElementById("payment-ref").style.display = "none";
                 twoStepperActive();
-            }else {
+            } else {
                 document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR OTHER CLAIMS DOCUMENTS</h3> <br /> <p class="font-weight-justy request-font"> Our sincerest condolences for your loss. </p> <br /> <p class="font-weight-justy request-font"> We have reviewed your initial claim request submission and identified that we may need the following documents for us to proceed: </p > <br /> <p class="font-weight-normal request-font"> <div style="padding-left: 10px;"> ' + finalDocsList + '</div> </p> <br /> <p class="font-weight-normal request-font"> Don&#39;t worry, you can easily submit scanned copies of these documents via e-mail at claims@aia.com so we can proceed with your claim request. </p> </div>';
                 document.getElementById("turnaround-time-ref").style.display = "block";
                 document.getElementById("payment-ref").style.display = "none";
@@ -789,7 +788,7 @@ function setDeathClaimStatusMsg() {
                     document.getElementById("turnaround-time-ref").style.display = "block";
                     document.getElementById("payment-ref").style.display = "none";
                     twoStepperActive();
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = ' <div> <h3>YOUR REQUEST IS BEING PROCESSED</h3> <br /> <p class="font-weight-justy request-font">Hang in there as we are now processing your request. Kindly expect an SMS update from us within 7 to 10 working days on the status of your request. </p> <br /> <p class="font-weight-normal request-font"> If we would need additional documents to support your request, we will reach out to you immediately. </p> <br /> <p class="font-weight-normal request-font"> You may also check the progress of your request <a href="https://aporve.github.io/phase2-pal-staging/main">here</a>. Just type in your reference number ' + transactionNumber + ' to view the status of your request. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "block";
                     document.getElementById("payment-ref").style.display = "none";
@@ -811,12 +810,12 @@ function setDeathClaimStatusMsg() {
                 allStepperActive()
             }
             else if (claimStatus.toLowerCase() == 'denied1') {
-                if(claimantFirstName !== ''){
+                if (claimantFirstName !== '') {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"> Hi ' + claimantFirstName + ' , first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now as your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> Please let us know if you wish to discuss this in detail. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now as your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> Please let us know if you wish to discuss this in detail. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -824,12 +823,12 @@ function setDeathClaimStatusMsg() {
                 }
             }
             else if (claimStatus.toLowerCase() == 'denied2') {
-                if(claimantFirstName !== ''){
+                if (claimantFirstName !== '') {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"> Hi ' + claimantFirstName + ' , first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now as the conditions do not meet the policy’s provisions. </p> <br /> <p class="font-weight-normal request-font"> Please let us know if you wish to discuss this in detail. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now as the conditions do not meet the policy’s provisions. </p> <br /> <p class="font-weight-normal request-font"> Please let us know if you wish to discuss this in detail. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -837,12 +836,12 @@ function setDeathClaimStatusMsg() {
                 }
             }
             else if (claimStatus.toLowerCase() == 'denied3') {
-                if(claimantFirstName !== ''){
+                if (claimantFirstName !== '') {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"> Hi ' + claimantFirstName + ', first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now as the circumstances in the situation are not included in your policy contract. </p> <br /> <p class="font-weight-normal request-font"> Please let us know if you wish to discuss this in detail. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now as the circumstances in the situation are not included in your policy contract. </p> <br /> <p class="font-weight-normal request-font"> Please let us know if you wish to discuss this in detail. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -850,12 +849,12 @@ function setDeathClaimStatusMsg() {
                 }
             }
             else if (claimStatus.toLowerCase() == 'denied4') {
-                if(claimantFirstName !== ''){
+                if (claimantFirstName !== '') {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font">Hi ' + claimantFirstName + ', first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. </p> <br /> <p class="font-weight-normal request-font"> Upon checking, your coverage and all its benefits have ended due to non-payment of premium dues. Please let us know if you wish to discuss this in detail so we can assist how you may be able to reinstate your policy so you can enjoy continued protection. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. If you have any questions or concerns regarding this matter, you may chat with Aya of AIA Philippines on Facebook Messenger or Viber. You may also contact or customer hotline at (02)8528-2000. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br />  <p class="font-weight-justy request-font"> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. </p> <br /> <p class="font-weight-normal request-font"> Upon checking, your coverage and all its benefits have ended due to non-payment of premium dues. Please let us know if you wish to discuss this in detail so we can assist how you may be able to reinstate your policy so you can enjoy continued protection. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. If you have any questions or concerns regarding this matter, you may chat with Aya of  AIA Philippines on Facebook Messenger or Viber. You may also contact or customer hotline at (02)8528-2000. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -871,13 +870,13 @@ function setDeathClaimStatusMsg() {
                 finalDocsList = finalDocsList + '<div style="display: flex;align-items: center; padding-bottom: 1px;"> <div id="outer-circle"> <div id="inner-circle"></div> </div> <p style="padding-left:7px">' + ' ' + item.name + '</p> </div>'
 
             });
-            if(claimantFirstName !== ''){
+            if (claimantFirstName !== '') {
                 // document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR OTHER CLAIMS DOCUMENTS</h3> <br /> <p class="font-weight-justy request-font"> Hi ' + claimantFirstName + '.We have reviewed your initial claim request submission and identified that we may need the following documents for us to proceed: </p > <br /> <p class="font-weight-normal request-font"> <div style="padding-left: 10px;"> ' + finalDocsList + '</div> </p> <br /> <p class="font-weight-normal request-font"> Don&#39;t worry, you can easily submit these documents to your Financial Advisor so we can proceed with your claim request.You may also submit your documents to any  AIA Philippines Customer Service Center near you.To find the nearest branch, please click <a href = "https://wwwuat.philamlife.com/en/help-support/locate-us.html"> here</a>. </p> </div>';
                 document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR OTHER CLAIMS DOCUMENTS</h3> <br /> <p class="font-weight-justy request-font"> Hi ' + claimantFirstName + '.We have reviewed your initial claim request submission and identified that we may need the following documents for us to proceed: </p > <br /> <p class="font-weight-normal request-font"> <div style="padding-left: 10px;"> ' + finalDocsList + '</div> </p> <br /> <p class="font-weight-normal request-font"> Don&#39;t worry, you can easily submit scanned copies of these documents via e-mail at claims@aia.com so we can proceed with your claim request.';
                 document.getElementById("turnaround-time-ref").style.display = "block";
                 document.getElementById("payment-ref").style.display = "none";
                 twoStepperActive();
-            }else {
+            } else {
                 // document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR OTHER CLAIMS DOCUMENTS</h3> <br /> <p class="font-weight-justy request-font"> We have reviewed your initial claim request submission and identified that we may need the following documents for us to proceed: </p > <br /> <p class="font-weight-normal request-font"> <div style="padding-left: 10px;"> ' + finalDocsList + '</div> </p> <br /> <p class="font-weight-normal request-font"> Don&#39;t worry, you can easily submit these documents to your Financial Advisor so we can proceed with your claim request.You may also submit your documents to any AIA Philippines Customer Service Center near you.To find the nearest branch, please click <a href = "https://wwwuat.philamlife.com/en/help-support/locate-us.html"> here</a>. </p> </div>';
                 document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR OTHER CLAIMS DOCUMENTS</h3> <br /> <p class="font-weight-justy request-font"> We have reviewed your initial claim request submission and identified that we may need the following documents for us to proceed: </p > <br /> <p class="font-weight-normal request-font"> <div style="padding-left: 10px;"> ' + finalDocsList + '</div> </p> <br /> <p class="font-weight-normal request-font"> Don&#39;t worry, you can easily submit scanned copies of these documents via e-mail at claims@aia.com so we can proceed with your claim request.';
 
@@ -885,7 +884,7 @@ function setDeathClaimStatusMsg() {
                 document.getElementById("payment-ref").style.display = "none";
                 twoStepperActive();
             }
-           
+
         }
         else {
             if (claimStatus.toLowerCase() == 'received') {
@@ -894,7 +893,7 @@ function setDeathClaimStatusMsg() {
                     document.getElementById("turnaround-time-ref").style.display = "block";
                     document.getElementById("payment-ref").style.display = "none";
                 }
-                else  {
+                else {
                     document.getElementById('claim-msg-text').innerHTML = ' <div> <h3>YOUR REQUEST IS BEING PROCESSED</h3> <br /> <p class="font-weight-justy request-font"> Hang in there as we are now processing your request. Kindly expect an SMS update from us within 7 to 10 working days on the status of your request. </p> <br /> <p class="font-weight-normal request-font"> If we would need additional documents to support your request, we will reach out to you immediately. </p> <br /> <p class="font-weight-normal request-font"> You may also check the progress of your request <a href="https://aporve.github.io/phase2-pal-staging/main">here</a>. Just type in your reference number ' + transactionNumber + ' to view the status of your request. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "block";
                     document.getElementById("payment-ref").style.display = "none";
@@ -908,11 +907,11 @@ function setDeathClaimStatusMsg() {
                     document.getElementById("payment-ref").style.display = "block";
                 }
                 else {
-                    if( claimantFirstName !== '') {
+                    if (claimantFirstName !== '') {
                         document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR PAYOUT HAS BEEN APPROVED</h3> <br /> <p class="font-weight-justy request-font"> Hi ' + claimantFirstName + '. We would like to let you know that we have approved your claim request for your AIA Philippines policy no. ' + policyNumber + '  for ' + beneficiaryCount + ' beneficiary/ies. </p> <br /> <p class="font-weight-normal request-font"> Kindly expect to receive the benefit through your chosen payout method. Please expect an update from us on when your benefit will be released. </p> <br /> <p class="font-weight-normal request-font"> We have also sent this information via SMS for your reference. </p> </div>'
                         document.getElementById("turnaround-time-ref").style.display = "none";
                         document.getElementById("payment-ref").style.display = "none";
-                    }else {
+                    } else {
                         document.getElementById('claim-msg-text').innerHTML = '<div> <h3>YOUR PAYOUT HAS BEEN APPROVED</h3> <br /> <p class="font-weight-justy request-font"> We would like to let you know that we have approved your claim request for your AIA Philippines policy no. ' + policyNumber + '  for ' + beneficiaryCount + ' beneficiary/ies. </p> <br /> <p class="font-weight-normal request-font"> Kindly expect to receive the benefit through your chosen payout method. Please expect an update from us on when your benefit will be released. </p> <br /> <p class="font-weight-normal request-font"> We have also sent this information via SMS for your reference. </p> </div>'
                         document.getElementById("turnaround-time-ref").style.display = "none";
                         document.getElementById("payment-ref").style.display = "none";
@@ -921,12 +920,12 @@ function setDeathClaimStatusMsg() {
                 allStepperActive()
             }
             else if (claimStatus.toLowerCase() == 'denied1') {
-                if(claimantFirstName !== ''){
+                if (claimantFirstName !== '') {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br /> Hi ' + claimantFirstName + ', first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem as your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. Please let us know if you wish to discuss this in detail so we can assist in providing you alternative options. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br /> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem as your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time. Please let us know if you wish to discuss this in detail so we can assist in providing you alternative options. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -934,11 +933,11 @@ function setDeathClaimStatusMsg() {
                 }
             }
             else if (claimStatus.toLowerCase() == 'denied2') {
-                if(claimantFirstName !== ''){
-                    document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br />Hi ' + claimantFirstName +', first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem as your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. Please let us know if you wish to discuss this in detail so we can assist in providing you alternative options. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>';
+                if (claimantFirstName !== '') {
+                    document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br />Hi ' + claimantFirstName + ', first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem as your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. Please let us know if you wish to discuss this in detail so we can assist in providing you alternative options. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>';
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br /> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem as your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. Please let us know if you wish to discuss this in detail so we can assist in providing you alternative options. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>';
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -946,12 +945,12 @@ function setDeathClaimStatusMsg() {
                 }
             }
             else if (claimStatus.toLowerCase() == 'denied3') {
-                if(claimantFirstName !== ''){
+                if (claimantFirstName !== '') {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br /> Hi ' + claimantFirstName + ', first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem since your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. Please let us know if you wish to discuss this in detail so we can assist in providing you alternative options. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com.  </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else {
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br /> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem since your policy doesn’t have Death coverage. </p> <br /> <p class="font-weight-normal request-font"> We understand that you’re going through a tough time, ' + claimantFirstName + '. Please let us know if you wish to discuss this in detail so we can assist in providing you alternative options. You may reach us through our Customer Hotline at (02)8528-2000 or you may discuss your concern with your financial advisor. </p> <br /> <p class="font-weight-normal request-font"> If you have other questions, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -959,12 +958,12 @@ function setDeathClaimStatusMsg() {
                 }
             }
             else if (claimStatus.toLowerCase() == 'denied4') {
-                if(claimantFirstName !== ''){
+                if (claimantFirstName !== '') {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br /> Hi ' + claimantFirstName + ', first of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem as your coverage and all its benefits have ended last ' + lapsationDate + ' due to non-payment of premium dues. </p> <br /> <p class="font-weight-normal request-font"> We are sorry for this news and we understand that you’re going through a tough time, ' + claimantFirstName + '. If you wish to discuss more about your claim request, or if you’d like to know how we can reinstate your policy, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. You may also call us at our Customer Hotline at (02)8528-2000. </p> </div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
                     allStepperActive()
-                }else{
+                } else {
                     document.getElementById('claim-msg-text').innerHTML = '<div> <h3>AN UPDATE ON YOUR CLAIM REQUEST</h3> <br /> <p class="font-weight-justy request-font"><p> Sorry, there seems to be a problem.</p><br /> First of all, we would like to extend our deepest sympathies for your loss. However, after reviewing the documents you submitted, we regret to inform you that we are unable to grant your claim request right now. There seems to be a problem as your coverage and all its benefits have ended last ' + lapsationDate + ' due to non-payment of premium dues. </p> <br /> <p class="font-weight-normal"> We are sorry for this news and we understand that you’re going through a tough time. If you wish to discuss more about your claim request, or if you’d like to know how we can reinstate your policy, you may reach out to us by chatting Aya of AIA Philippines on Facebook Messenger or sending us an e-mail at customerservice.ph@aia.com. You may also call us at our Customer Hotline at (02)8528-2000. </p> </p></div>'
                     document.getElementById("turnaround-time-ref").style.display = "none";
                     document.getElementById("payment-ref").style.display = "none";
@@ -1089,9 +1088,9 @@ function trackProgressDropDown() {
         + (claimStatus == 'approved' ?
             '<div class="step step-active"><div><div class="circle " id="circle2"><i class="fa fa-check" ></i ></div ></div><div><div class="title">' + progress_msges[8]['msg'] + '</div></div></div>' + '<div class="step step-active"><div><div class="circle " id="circle2"><i class="fa fa-check" ></i ></div ></div><div><div class="title">' + progress_msges[11]['msg'] + '</div></div></div>' :
             '')
-    + (claimStatus == 'approved' && disbursementType == 'CTA' && beneficiaryCount == 1 ?
-        '<div class="step step-active"><div><div class="circle " id="circle2"><i class="fa fa-check" ></i ></div ></div><div><div class="title">' + progress_msges[12]['msg'] + '</div></div></div>'
-        : claimStatus == 'approved' && disbursementType == 'PUA' && beneficiaryCount == 1 ? '<div class="step step-active"><div><div class="circle " id="circle2"><i class="fa fa-check" ></i ></div ></div><div><div class="title">' + progress_msges[9]['msg'] + '</div></div></div>' : '')
+        + (claimStatus == 'approved' && disbursementType == 'CTA' && beneficiaryCount == 1 ?
+            '<div class="step step-active"><div><div class="circle " id="circle2"><i class="fa fa-check" ></i ></div ></div><div><div class="title">' + progress_msges[12]['msg'] + '</div></div></div>'
+            : claimStatus == 'approved' && disbursementType == 'PUA' && beneficiaryCount == 1 ? '<div class="step step-active"><div><div class="circle " id="circle2"><i class="fa fa-check" ></i ></div ></div><div><div class="title">' + progress_msges[9]['msg'] + '</div></div></div>' : '')
     document.getElementById('progs-status').innerHTML = final_progress_result
 
     //--before integration--//

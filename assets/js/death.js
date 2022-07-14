@@ -1849,6 +1849,7 @@ function handleForm(event) {
         $("#step2>div").addClass("active");
         $('#form_wrapper').hide();
         $('#death_data_privacy').hide();
+        $('#popUpPUACTA').modal('show');
         $('#payment').show();
         $("#customer_Name").text(`Hi ${field_BeneficiaryFirstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 7 to 10 working days on the status of your request.`);
         console.log(field_BeneficiaryFirstName, 'field_BeneficiaryFirstName~~~~~~>>>')
@@ -2064,15 +2065,15 @@ const fileCheck = (file, button, pageid, formData, fileName) => {
 
 const isFileSizeValid = (file) => {
     if (file.size == 0) {
-      fileSizeZero = true;
-      return false;
-      //
+        fileSizeZero = true;
+        return false;
+        //
     }
     else if (file.size < 5242880) {
-      return true;
+        return true;
     }
     return false;
-  };
+};
 
 file1.onchange = async function (e) {
     docType = "DIDC033";

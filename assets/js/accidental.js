@@ -113,8 +113,7 @@ function addFileToList(fileObject, fileName) {
 
 let cleartime = null;
 function timer(lowerVal, UpperVal) {
-  console.log('condition 1 of 1')
-  console.log(lowerVal,UpperVal, 'Lower, upper')
+
   var random = 1
   return new Promise((resolve, reject) => {
     var i = lowerVal
@@ -2060,6 +2059,7 @@ function preSubmitCall() {
               if (otpSubmitted == false) { otpTimer(); isOtpPopShown = true; } else {
 
                 $('#requirements').hide();
+                $('#popUpPUACTA').modal('show');
                 $('#payment').show();
               }
 
@@ -2126,16 +2126,12 @@ function finalSubmitCall() {
         }
       })
     }), '*');
-    console.log('Initial condition')
     timer(2, 85).then(async () => {
-      console.log('condition1');
     })
-
   })
 
   window.addEventListener('message', function (eventData) {
-    console.log(eventData, 'Event Data1')
-    console.log('condition2')
+
     try {
 
       if (eventData.data) {
@@ -2145,7 +2141,7 @@ function finalSubmitCall() {
           clearTimeout(cleartime);
           console.log('upload success event received')
           timer(85, 95).then(async () => {
-            console.log('condition3')
+
 
           })
 
@@ -2162,14 +2158,14 @@ function finalSubmitCall() {
   })
 
   window.addEventListener('message', function (eventData) {
-    console.log(eventData, 'Event Data2')
 
 
+    // console.log(event.data.event_code)
     try {
 
       if (eventData.data) {
         let event = JSON.parse(eventData.data);
-        console.log(event, 'Event')
+        console.log(event)
         if (event.event_code == 'finalSubmitResponse') { //sucess
           clearTimeout(cleartime);
           console.log('finalsubmit event received')
@@ -2194,7 +2190,6 @@ function finalSubmitCall() {
 
           }
           else {
-            console.log('In else Event Data 2')
             // alert(event.data.returnMessage + 'returnCode not 0 ')
             document.getElementById('returnMessage').innerHTML = event.data.returnMessage;
             $("#invalidReturnCode").modal("show");
@@ -3220,12 +3215,12 @@ function submitOtp() {
         if (event.event_code == 'validationResponse') { //sucess
           console.log(event.data)
           if (event.data.returnCode == '0' || event.data.retCode == '0') {
-            console.log('under 0 condition====')
             document.getElementById("back_btn1").style.display = "none";
             // document.getElementById("back_btn1").disabled = true;
             $('#invalidOtp').modal('hide');
             $('#otpPopUp').modal('hide');
             $('#requirements').hide();
+            $('#popUpPUACTA').modal('show');
             $('#payment').show();
             otpSubmitted = true;
             document.getElementById('otp').value = '';

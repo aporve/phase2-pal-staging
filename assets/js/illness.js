@@ -105,7 +105,7 @@ function timer(lowerVal, UpperVal) {
     var random = 1
     return new Promise((resolve, reject) => {
         var i = lowerVal
-      cleartime = setInterval(() => {
+        cleartime = setInterval(() => {
             i = random + i;
             renderProgress(i)
             if (i == (UpperVal - 1)) {
@@ -1104,15 +1104,15 @@ const fileCheck = (file, button, pageid, formData, fileName) => {
 
 const isFileSizeValid = (file) => {
     if (file.size == 0) {
-      fileSizeZero = true;
-      return false;
-      //
+        fileSizeZero = true;
+        return false;
+        //
     }
     else if (file.size < 5242880) {
-      return true;
+        return true;
     }
     return false;
-  };
+};
 
 file1.onchange = async function (e) {
     docType = "LIDC001";
@@ -1507,17 +1507,17 @@ file6.onchange = async function (e) {
                     $("#file_Upload_Tick_6").hide();
                     $("#file_upload_cancle_6").show();
                     $("#upload_warning").text(
-                      "Your file seems to be empty. Please check your file and its contents, then re-upload to proceed. Note: You may only upload documents not exceeding 5MB in size."
+                        "Your file seems to be empty. Please check your file and its contents, then re-upload to proceed. Note: You may only upload documents not exceeding 5MB in size."
                     );
-                  } else {
+                } else {
                     $("#warning_parent").show();
                     $("#file_loader_icon_6").hide();
                     $("#file_Upload_Tick_6").hide();
                     $("#file_upload_cancle_6").show();
                     $("#upload_warning").text(
-                      "The file size of your documents should not be larger than 5MB. Please re-upload the correct file size to proceed."
+                        "The file size of your documents should not be larger than 5MB. Please re-upload the correct file size to proceed."
                     );
-                  }
+                }
             }
             break;
         default:
@@ -1590,17 +1590,17 @@ file7.onchange = async function (e) {
                     $("#file_Upload_Tick_7").hide();
                     $("#file_upload_cancle_7").show();
                     $("#upload_warning").text(
-                      "Your file seems to be empty. Please check your file and its contents, then re-upload to proceed. Note: You may only upload documents not exceeding 5MB in size."
+                        "Your file seems to be empty. Please check your file and its contents, then re-upload to proceed. Note: You may only upload documents not exceeding 5MB in size."
                     );
-                  } else {
+                } else {
                     $("#warning_parent").show();
                     $("#file_loader_icon_7").hide();
                     $("#file_Upload_Tick_7").hide();
                     $("#file_upload_cancle_7").show();
                     $("#upload_warning").text(
-                      "The file size of your documents should not be larger than 5MB. Please re-upload the correct file size to proceed."
+                        "The file size of your documents should not be larger than 5MB. Please re-upload the correct file size to proceed."
                     );
-                  }
+                }
             }
             break;
         default:
@@ -2275,7 +2275,7 @@ function preSubmitCall() {
     otpTimerFunction();
     window.addEventListener('message', function (eventData) {
 
-      
+
         // console.log(event.data.event_code)
         try {
 
@@ -2293,6 +2293,7 @@ function preSubmitCall() {
                             $("#step2>div").addClass("active");
                             if (otpSubmitted == false) { otpTimer(); isOtpPopShown = true; } else {
                                 $('#requirements').hide();
+                                $('#popUpPUACTA').modal('show');
                                 $('#payment').show();
                             }
                             // })
@@ -2385,7 +2386,7 @@ function finalSubmitCall() {
     })
     window.addEventListener('message', function (eventData) {
 
-       
+
         // console.log(event.data.event_code)
         try {
 
@@ -2400,18 +2401,18 @@ function finalSubmitCall() {
                         myDisable()
                         document.getElementById('ref_number').innerHTML = event.data?.transactionNumber
                         timer(95, 100).then(async () => {
-                        $("#step2").addClass("done");
-                        /*  $("#step3").addClass("active");
-                         $("#step3>div").addClass("active"); */
-                        /* $("#step3").addClass("done"); */
-                        $("#step3_circle").addClass("md-step-step3-circle ");
-                        $("#step3_span").addClass("md-step3-span");
-                        $("#step3_reference").addClass("md-step3-span")
-                        $("#account_details").hide();
-                        $("#account_details1").hide();
-                        $("#pickUp").hide();
-                        $("#process_confirmation").show();
-                        // console.log("Data -> ", data);
+                            $("#step2").addClass("done");
+                            /*  $("#step3").addClass("active");
+                             $("#step3>div").addClass("active"); */
+                            /* $("#step3").addClass("done"); */
+                            $("#step3_circle").addClass("md-step-step3-circle ");
+                            $("#step3_span").addClass("md-step3-span");
+                            $("#step3_reference").addClass("md-step3-span")
+                            $("#account_details").hide();
+                            $("#account_details1").hide();
+                            $("#pickUp").hide();
+                            $("#process_confirmation").show();
+                            // console.log("Data -> ", data);
                         });
                     }
                     else {
@@ -2482,7 +2483,7 @@ function pickup_Bpi() {
     document.getElementById("pick_up_btn").disabled = true;
     document.getElementById("pick_up_btn").style.cursor = "no-drop";
     document.getElementById("goback_pickup").style.display = "none";
-    
+
     var nodes = document.getElementById("pickUp").getElementsByTagName('*');
     for (var i = 0; i < nodes.length; i++) {
         nodes[i].disabled = true;
@@ -2738,7 +2739,7 @@ function resendOtp(type) {
             }
 
         })
-       
+
     }
 
     // //api call for resend otp
@@ -2844,6 +2845,7 @@ function submitOtp() {
                         $('#otpPopUp').modal('hide');
                         $('#invalidOtp').modal('hide');
                         $('#requirements').hide();
+                        $('#popUpPUACTA').modal('show');
                         $('#payment').show();
                         otpSubmitted = true;
                         document.getElementById('otp').value = '';
